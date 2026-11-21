@@ -1,0 +1,22 @@
+# Annex B of the PMED final report (docs/informe-pmed-ekf-odometria.pdf, p. 17),
+# transcribed as printed. The annex ends after `odom0_queue_size`; the report
+# shows no further parameters (e.g. covariance matrices).
+ekf_filter_node:
+  ros__parameters:
+    frequency: 30.0
+    two_d_mode: true
+    publish_tf: true
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: odom
+
+    # Fusión de Odometría Ruidosa
+    odom0: /odom_noisy
+    odom0_config: [false, false, false,
+                   false, false, false,
+                   true,  true,  false,
+                   false, false, true,
+                   false, false, false]
+    odom0_differential: false
+    odom0_queue_size: 10
